@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <algorithm>
 #include "deck.h"
 
 Deck::Deck()
@@ -27,15 +28,24 @@ void Deck::print_deck()
     cards[i].print();
 
     if(i % 13 == 12){
-      std::cout << "\n";
+      std::cout << endl;
     }
   }
 }
 
+int GenerateRandom(int seed)
+{
+  srand(time(0));
+  return rand() % seed;
+}
+
 void Deck::shuffle(int seed)
 {
+  random_shuffle(std::begin(cards), std::end(cards), GenerateRandom);
 }
 
 void Deck::sort()
 {
+  int size = sizeof(cards) / sizeof(cards[0]);
+  sorter.Sort(cards, size);
 }

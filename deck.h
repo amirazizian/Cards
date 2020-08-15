@@ -10,6 +10,7 @@
 #include <string>
 #include <iostream>
 #include "card.h"
+#include "sorter.h"
 using namespace std;
 
 class Deck
@@ -31,4 +32,5 @@ public:
 private:
 
   Card cards[52];
+  Sorter sorter;
 };
