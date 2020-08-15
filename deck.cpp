@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <algorithm>
 #include "deck.h"
 
 Deck::Deck()
@@ -32,8 +33,13 @@ void Deck::print_deck()
   }
 }
 
+int GenerateRandom(int seed){
+  return rand() % seed;
+}
+
 void Deck::shuffle(int seed)
 {
+  random_shuffle(std::begin(cards), std::end(cards), GenerateRandom);
 }
 
 void Deck::sort()
