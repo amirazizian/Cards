@@ -5,7 +5,7 @@
 // @details
 // This class is responsible for storing, printing and comparing a playing card.
 //
-
+#pragma once
 #include <string>
 #include <iostream>
 using namespace std;
@@ -17,10 +17,10 @@ public:
   // Suit enumeration
 	enum Suit
 	{
-		SPADES = 0,
-		HEARTS = 1,
-		DIAMONDS = 2,
-		CLUBS = 3
+		SPADES = 3,
+		HEARTS = 2,
+		CLUBS = 1,
+    DIAMONDS = 0
 	};
 	
 	// value enumeration
@@ -63,8 +63,13 @@ public:
 	{
 		return m_value;
 	}
-  
-	// Compares if the card face value of two cards are equal.  
+
+  int get_Weight()
+  {
+    return m_weight;
+  }
+
+  // Compares if the card face value of two cards are equal.  
 	// Does not take suit into consideration.
 	//
 	// @param[in]	rhs   The right hand side card.
@@ -110,12 +115,14 @@ public:
 	{
 	  m_value = value;
 	  m_suit = suit;
+    m_weight = suit * 100 + value;
 	}
 
 	void  set_value(int value,int suit)
 	{
 	  m_value = static_cast<Value>(value);
 	  m_suit = static_cast<Suit>(suit);
+    m_weight = suit * 100 + value;
 	}
 
 
@@ -123,4 +130,5 @@ private:
 
 	Suit  m_suit;   // The suit of the card
 	Value m_value;  // The value o the card
+  int m_weight;
 };
